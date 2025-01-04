@@ -40,76 +40,55 @@ const duplasNaoRecepcao = [
     ["Tete", "Jessie"]
 ];
 
-// Array com todos os obreiros disponíveis
-const obreirosDisponiveis = {
-    recepcao: ['Gabriel e Katia', 'Camila e Afonso'],
-    organizacao: ['Zé e Zélia'],
-    geral: ['Kauê', 'Nely']
-};
+// Lista de todos os membros que fazem parte de duplas fixas
+const membrosDuplas = duplasFixes.flat();
+let ultimaEscalaDomingo = [];
+let penultimaEscalaDomingo = [];
+let ultimaEscalaQuarta = []; // Armazena a última escala de quarta
 
-const obreirosQuarta = ['Ana Paula e Mari', 'Francisco e Lucia'];
+function gerarEscalaPeriodo() {
+    const escalas = [
+        { data: "05/01/2025", tipo: "domingo" },
+        { data: "08/01/2025", tipo: "quarta" },
+        { data: "12/01/2025", tipo: "domingo" },
+        { data: "15/01/2025", tipo: "quarta" },
+        { data: "19/01/2025", tipo: "domingo" },
+        { data: "22/01/2025", tipo: "quarta" },
+        { data: "26/01/2025", tipo: "domingo" },
+        { data: "29/01/2025", tipo: "quarta" },
+        { data: "02/02/2025", tipo: "domingo" },
+        { data: "05/02/2025", tipo: "quarta" },
+        { data: "09/02/2025", tipo: "domingo" },
+        { data: "12/02/2025", tipo: "quarta" },
+        { data: "16/02/2025", tipo: "domingo" },
+        { data: "19/02/2025", tipo: "quarta" },
+        { data: "23/02/2025", tipo: "domingo" }
+    ];
 
-// Armazenar últimas escalas para controle
-let ultimaEscalaDomingo = {
-    recepcao: '',
-    organizacao: '',
-    geral: ''
-};
+    let todasEscalas = document.getElementById('todas-escalas');
+    let mesAtual = "";
 
-// Armazenar obreiros das últimas escalas
-let escalasDomingo = [];
-let escalasQuartas = [];
-
-// Função para gerar escalas
-function gerarEscala(tipo) {
-    if (tipo === 'domingo') {
-        // Filtra obreiros que não foram escalados nos últimos domingos e quartas
-        const recepcaoDisponiveis = obreirosDisponiveis.recepcao.filter(
-            obreiro => !escalasDomingo.includes(obreiro) && !escalasQuartas.includes(obreiro)
-        );
-        const organizacaoDisponiveis = obreirosDisponiveis.organizacao.filter(
-            obreiro => !escalasDomingo.includes(obreiro) && !escalasQuartas.includes(obreiro)
-        );
-        const geralDisponiveis = obreirosDisponiveis.geral.filter(
-            obreiro => !escalasDomingo.includes(obreiro) && !escalasQuartas.includes(obreiro)
-        );
-
-        // Se não houver obreiros disponíveis, reinicia a lista
-        if (recepcaoDisponiveis.length === 0) {
-            escalasDomingo = []; // Reinicia a lista
+    escalas.forEach(escala => {
+        const mes = escala.data.split('/')[1];
+        const mesNome = mes === "01" ? "Janeiro" : "Fevereiro";
+        
+        if (mesAtual !== mesNome) {
+            mesAtual = mesNome;
+            todasEscalas.innerHTML += `<h2 class="mes-separador">${mesNome}</h2>`;
         }
 
-        const novaEscala = {
-            recepcao: recepcaoDisponiveis[Math.floor(Math.random() * recepcaoDisponiveis.length)],
-            organizacao: organizacaoDisponiveis[Math.floor(Math.random() * organizacaoDisponiveis.length)],
-            geral: geralDisponiveis[Math.floor(Math.random() * geralDisponiveis.length)]
-        };
-
-        escalasDomingo.push(novaEscala.recepcao, novaEscala.organizacao, novaEscala.geral);
-        ultimaEscalaDomingo = novaEscala;
-        return novaEscala;
-    } else {
-        // Para quarta-feira, filtra quem não estava no último domingo e nas últimas quartas
-        const quartaDisponiveis = obreirosQuarta.filter(obreiro => {
-            const naoEstavaNoUltimoDomingo = !Object.values(ultimaEscalaDomingo).includes(obreiro);
-            const naoEstavaNasUltimasQuartas = !escalasQuartas.includes(obreiro);
-            return naoEstavaNoUltimoDomingo && naoEstavaNasUltimasQuartas;
-        });
-
-        // Se não houver obreiros disponíveis, reinicia a lista
-        if (quartaDisponiveis.length === 0) {
-            escalasQuartas = []; // Reinicia a lista
+        if (escala.tipo === "domingo") {
+            const obreirosDomingo = gerarEscalaDomingo([]);
+            todasEscalas.innerHTML += criarCardEscala('domingo', escala.data, obreirosDomingo);
+            
+            // Atualiza o histórico
+            penultimaEscalaDomingo = [...ultimaEscalaDomingo];
+            ultimaEscalaDomingo = [...obreirosDomingo];
+        } else {
+            const duplaQuarta = gerarEscalaQuarta();
+            todasEscalas.innerHTML += criarCardEscala('quarta', escala.data, duplaQuarta);
         }
-
-        const novaEscala = {
-            recepcao: quartaDisponiveis[Math.floor(Math.random() * quartaDisponiveis.length)],
-            organizacao: quartaDisponiveis[Math.floor(Math.random() * quartaDisponiveis.length)],
-            geral: quartaDisponiveis[Math.floor(Math.random() * quartaDisponiveis.length)]
-        };
-
-        escalasQuartas.push(novaEscala.recepcao, novaEscala.organizacao, novaEscala.geral);
-        return novaEscala;
-    }
+    });
 }
 
 function verificarStatusData(data) {
@@ -330,16 +309,6 @@ function gerarEscalaQuarta() {
     ultimaEscalaQuarta = [...duplaAleatoria]; // Atualiza a última escala de quarta
     return duplaAleatoria;
 }
-
-// Função para trocar as escalas
-function trocarEscalas(data1, data2) {
-    const temp = escalasQuartas[data1];
-    escalasQuartas[data1] = escalasQuartas[data2];
-    escalasQuartas[data2] = temp;
-}
-
-// Chamada da função para trocar as escalas
-trocarEscalas('12/02/2025', '19/02/2025');
 
 // Gerar escala quando a página carregar
 window.onload = gerarEscalaPeriodo; 
