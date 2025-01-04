@@ -68,6 +68,13 @@ function gerarEscalaPeriodo() {
     let todasEscalas = document.getElementById('todas-escalas');
     let mesAtual = "";
 
+    // Verifica se já existe uma escala armazenada
+    const escalaArmazenada = localStorage.getItem('escalaAtual');
+    if (escalaArmazenada) {
+        todasEscalas.innerHTML = escalaArmazenada; // Usa a escala armazenada
+        return; // Não gera uma nova escala
+    }
+
     escalas.forEach(escala => {
         const mes = escala.data.split('/')[1];
         const mesNome = mes === "01" ? "Janeiro" : "Fevereiro";
@@ -80,15 +87,14 @@ function gerarEscalaPeriodo() {
         if (escala.tipo === "domingo") {
             const obreirosDomingo = gerarEscalaDomingo([]);
             todasEscalas.innerHTML += criarCardEscala('domingo', escala.data, obreirosDomingo);
-            
-            // Atualiza o histórico
-            penultimaEscalaDomingo = [...ultimaEscalaDomingo];
-            ultimaEscalaDomingo = [...obreirosDomingo];
         } else {
             const duplaQuarta = gerarEscalaQuarta();
             todasEscalas.innerHTML += criarCardEscala('quarta', escala.data, duplaQuarta);
         }
     });
+
+    // Armazena a escala gerada no localStorage
+    localStorage.setItem('escalaAtual', todasEscalas.innerHTML);
 }
 
 function verificarStatusData(data) {
