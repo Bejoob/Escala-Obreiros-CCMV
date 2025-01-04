@@ -1,0 +1,643 @@
+:root {
+    --primary-color: #1a1a1a;      /* Preto suave para fundo */
+    --accent-color: #d8c3aa;       /* Bege/creme mais claro */
+    --highlight-color: #a68e6d;    /* Marrom mais claro */
+    --text-light: #ffffff;
+    --text-dark: #1a1a1a;
+    --bg-light: #f8f9fa;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, var(--highlight-color), var(--accent-color));
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.1) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        rgba(255, 255, 255, 0.1) 75%, 
+        transparent 75%, 
+        transparent);
+    background-size: 50px 50px;
+    opacity: 0.1;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+header p {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Efeito de linha decorativa */
+header h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 1rem auto;
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/* Efeito hover suave */
+header:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+}
+
+/* Animação de gradiente */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+header {
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.escalas-container {
+    background: var(--primary-color);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.escala-card {
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(26, 26, 26, 0.95);
+    border-radius: 0 8px 8px 0;
+    color: var(--accent-color);
+}
+
+.escala-card.quarta {
+    border-left-color: var(--highlight-color);
+}
+
+.escala-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.escala-card.quarta h3 {
+    color: var(--highlight-color);
+}
+
+.data {
+    font-weight: bold;
+    color: #e6e6e6;
+    margin-bottom: 0.5rem;
+}
+
+.escala-card p {
+    color: #ffffff;
+    margin: 0.5rem 0;
+}
+
+.legenda {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(26, 26, 26, 0.95);
+    border-radius: 8px;
+}
+
+.legenda h3 {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.legenda-item {
+    margin-bottom: 1.5rem;
+}
+
+.legenda-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-culto {
+    padding: 1rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.info-culto.domingo {
+    border-left: 4px solid var(--accent-color);
+}
+
+.info-culto.quarta {
+    border-left: 4px solid var(--highlight-color);
+}
+
+.info-culto h4 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.info-culto p {
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.info-culto ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-culto ul li {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.info-culto ul li::before {
+    content: '•';
+    color: var(--highlight-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Hover effects */
+.info-culto:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.funcao {
+    color: var(--highlight-color);
+    font-weight: 500;
+}
+
+.mes-separador {
+    color: var(--highlight-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.primeiro-domingo {
+    background: #ffffff !important;
+    border: 2px solid #e11d48 !important;
+    padding: 1.5rem !important;
+    position: relative;
+}
+
+.primeiro-domingo h3 {
+    color: #111827;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+.santa-ceia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.santa-ceia-tag {
+    background-color: #e11d48;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.santa-ceia-content {
+    background-color: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.santa-ceia-imagem {
+    margin: -20px -20px 15px -20px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.santa-ceia-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.santa-ceia-message {
+    padding-top: 1rem;
+}
+
+.santa-ceia-message .titulo-mes {
+    font-weight: 600;
+    color: #be123c;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.santa-ceia-message .descricao {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Ajuste do status badge */
+.primeiro-domingo .status-badge {
+    background-color: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde047;
+}
+
+/* Hover effect */
+.primeiro-domingo:hover {
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    .santa-ceia-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .santa-ceia-imagem {
+        height: 150px;
+    }
+}
+
+.aviso-especial {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.titulo-especial {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.descricao-especial {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.santa-ceia-info {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.horario, .servico-especial {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 640px) {
+    .santa-ceia-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Animação suave ao passar o mouse */
+.primeiro-domingo:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
+.icone-info {
+    font-size: 24px;
+    margin-right: 12px;
+    margin-top: 2px;
+}
+
+.mensagem-especial {
+    flex: 1;
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    position: relative;
+    padding-left: 28px; /* Espaço para o indicador */
+}
+
+/* Indicador de status (bolinha) */
+.status-badge::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Status Futuro - Verde */
+.status-badge.futuro {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid #22c55e;
+}
+
+.status-badge.futuro::before {
+    background-color: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+/* Status Atual (Próximo) - Amarelo */
+.status-badge.atual {
+    background-color: rgba(234, 179, 8, 0.1);
+    color: #eab308;
+    border: 1px solid #eab308;
+}
+
+.status-badge.atual::before {
+    background-color: #eab308;
+    box-shadow: 0 0 8px #eab308;
+}
+
+/* Status Passado - Vermelho */
+.status-badge.passado {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+.status-badge.passado::before {
+    background-color: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+}
+
+/* Timer dentro do status */
+.status-timer {
+    margin-left: 8px;
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+.info-primeiro-domingo {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.info-primeiro-domingo i {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Hover effects */
+.escala-card:hover {
+    background: rgba(26, 26, 26, 0.98);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(216, 195, 170, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .escala-card {
+        padding: 1rem;
+    }
+}
+
+/* Estilo específico para os nomes dos obreiros */
+.escala-card p {
+    margin: 0.5rem 0;
+}
+
+/* Cor do texto das funções */
+.funcao {
+    color: var(--highlight-color);
+    font-weight: 500;
+}
+
+/* Cor dos nomes */
+.escala-card p {
+    color: #ffffff; /* Nomes em branco */
+}
+
+/* Mantém a cor original para o título do card */
+.escala-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Exceção para o primeiro domingo que mantém seu estilo próprio */
+.escala-card.primeiro-domingo p {
+    color: inherit; /* Mantém a cor original para o primeiro domingo */
+}
+
+/* Ajuste para garantir que os nomes fiquem em branco */
+.escala-card:not(.primeiro-domingo) p:not(.funcao) {
+    color: #ffffff;
+}
+
+/* Estilo para o card de primeiro domingo */
+.santa-ceia-message p:first-child,
+.santa-ceia-message p:last-child {
+    color: var(--primary-color) !important;
+}
+
+.santa-ceia-content {
+    text-align: center;
+}
+
+.santa-ceia-message {
+    text-align: center;
+}
+
+.santa-ceia-message p:first-child {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.santa-ceia-message p:last-child {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Garantir que a cor seja aplicada mesmo com outras regras */
+.escala-card.primeiro-domingo .santa-ceia-message p {
+    color: var(--primary-color) !important;
+}
+
+/* Estilo base para os badges de tipo de culto */
+.tipo-culto {
+    background-color: var(--highlight-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+
+.data-culto {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 5px;  /* Espaçamento entre o badge e a data */
+}
+
+/* Ajuste do alinhamento horizontal */
+.escala-card h3 {
+    align-items: baseline;  /* Alinha os itens pela linha base do texto */
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    .escala-card h3 {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .data-culto {
+        width: auto;  /* Remove largura fixa */
+        margin-top: 0;  /* Remove margem superior */
+    }
+}
+
+/* Mantém o estilo especial para primeiro domingo */
+.escala-card.primeiro-domingo .tipo-culto {
+    background-color: #e11d48 !important;  /* Mantém vermelho para primeiro domingo */
+}
+
+/* Mantém o estilo do badge Santa Ceia */
+.santa-ceia-tag {
+    background-color: #e11d48;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+} 
