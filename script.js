@@ -47,70 +47,88 @@ let ultimaEscalaQuarta = []; // Armazena a última escala de quarta
 function gerarEscalaPeriodo() {
     const escalas = [
         { data: "08/01/2025", tipo: "quarta", obreiros: ["Lucinha", "Bene"] },
-        { data: "12/01/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Márcia" },
+        { data: "12/01/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Nelly", "Jaiane"], organizacaoGeral: "Bruna" },
         { data: "15/01/2025", tipo: "quarta", obreiros: ["Francisco", "Lucia"] },
-        { data: "19/01/2025", tipo: "domingo", recepcao: ["Victor", "Larissa"], organizacaoLugares: ["Tete", "Jessie"], organizacaoGeral: "Kauê" },
+        { data: "19/01/2025", tipo: "domingo", recepcao: ["Victor", "Larissa"], organizacaoLugares: ["Lucinha", "Bene"], organizacaoGeral: "Márcia" },
         { data: "22/01/2025", tipo: "quarta", obreiros: ["Zé", "Zélia"] },
-        { data: "26/01/2025", tipo: "domingo", recepcao: ["Kauê", "Márcia"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Camila" },
+        { data: "26/01/2025", tipo: "domingo", recepcao: ["Kátia", "Gabriel"], organizacaoLugares: ["Jessier", "Tete"], organizacaoGeral: "Ryan" },
+        { data: "29/01/2025", tipo: "quarta", obreiros: ["Kátia", "Kaue"] },
+        { data: "02/02/2025", tipo: "domingo", recepcao: ["Todos os diáconos"], organizacaoLugares: [], organizacaoGeral: "" },
         { data: "05/02/2025", tipo: "quarta", obreiros: ["Ana Paula", "Mari"] },
-        { data: "09/02/2025", tipo: "domingo", recepcao: ["Gabriel", "Katia"], organizacaoLugares: ["Zé", "Zélia"], organizacaoGeral: "Ryan" },
+        { data: "09/02/2025", tipo: "domingo", recepcao: ["Kauê", "Marcia"], organizacaoLugares: ["Zé", "Zélia"], organizacaoGeral: "Jack" },
         { data: "12/02/2025", tipo: "quarta", obreiros: ["Lucinha", "Bene"] },
-        { data: "16/02/2025", tipo: "domingo", recepcao: ["Kauê", "Márcia"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Jaiane" },
-        { data: "19/02/2025", tipo: "quarta", obreiros: ["Francisco", "Lucia"] },
-        { data: "23/02/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Tete", "Jessie"], organizacaoGeral: "Márcia" }
+        { data: "16/02/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Mari" },
+        { data: "19/02/2025", tipo: "quarta", obreiros: ["Francisco", "Lúcia"] },
+        { data: "23/02/2025", tipo: "domingo", recepcao: ["Victor", "Larissa"], organizacaoLugares: ["Ana Paula", "Jaiane"], organizacaoGeral: "Bruna" },
+        { data: "26/02/2025", tipo: "quarta", obreiros: ["Zé", "Zélia"] }
     ];
 
     let todasEscalas = document.getElementById('todas-escalas');
+    todasEscalas.innerHTML = ""; // Limpar conteúdo anterior
     let mesAtual = "";
 
-    // Loop through each escala to display
     escalas.forEach(escala => {
         const mes = escala.data.split('/')[1];
         const mesNome = mes === "01" ? "Janeiro" : "Fevereiro";
+        const sinalizacao = verificarStatusData(escala.data); // Verifica a sinalização
 
         if (mesAtual !== mesNome) {
             mesAtual = mesNome;
-            todasEscalas.innerHTML += `<h2 class="mes-separador">${mesNome}</h2>`;
+            todasEscalas.innerHTML += `<div class="mes-separador">${mesNome}</div>`;
         }
 
+        // Adiciona a escala
         if (escala.tipo === "quarta") {
-            todasEscalas.innerHTML += `<p>Quarta-feira - ${escala.data}<br>Obreiros: ${escala.obreiros.join(' e ')}</p>`;
+            todasEscalas.innerHTML += `
+                <div class="escala-item quarta">
+                    <h3>Quarta-feira - ${escala.data}</h3>
+                    <p>Obreiros: ${escala.obreiros.join(' e ')}</p>
+                    <div class="sinalizacao ${sinalizacao.status}">
+                        <div class="card-sinalizacao">
+                            Status: ${sinalizacao.mensagem}
+                        </div>
+                    </div>
+                </div>`;
         } else if (escala.tipo === "domingo") {
-            todasEscalas.innerHTML += `<p>Domingo - ${escala.data}<br>Recepção da entrada: ${escala.recepcao.join(' e ')}<br>Organização dos lugares: ${escala.organizacaoLugares.join(' e ')}<br>Organização geral: ${escala.organizacaoGeral}</p>`;
+            todasEscalas.innerHTML += `
+                <div class="escala-item domingo">
+                    <h3>Domingo - ${escala.data}</h3>
+                    <p><strong>Recepção da entrada:</strong> ${escala.recepcao.join(' e ')}</p>
+                    <p><strong>Organização dos lugares:</strong> ${escala.organizacaoLugares.join(' e ') || 'N/A'}</p>
+                    <p><strong>Organização geral:</strong> ${escala.organizacaoGeral || 'N/A'}</p>
+                    <div class="sinalizacao ${sinalizacao.status}">
+                        <div class="card-sinalizacao">
+                            Status: ${sinalizacao.mensagem}
+                        </div>
+                    </div>
+                </div>`;
         }
         todasEscalas.innerHTML += "<hr>";
     });
 
-    // Armazena a escala gerada no localStorage
     localStorage.setItem('escalaAtual', todasEscalas.innerHTML);
 }
 
 function verificarStatusData(data) {
     const hoje = new Date();
     const dataEvento = new Date(data.split('/').reverse().join('-'));
-    const umaSemana = 7 * 24 * 60 * 60 * 1000;
     const diff = dataEvento - hoje;
     const diffDias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    
+
     if (dataEvento < hoje) {
         return {
-            status: 'passado',
-            texto: 'Realizado',
-            timer: `${Math.abs(diffDias)} dias atrás`
+            status: 'sinalizacao-vermelha',
+            mensagem: 'Data já passou'
         };
-    } else if (diff <= umaSemana) {
+    } else if (diffDias <= 7) {
         return {
-            status: 'atual',
-            texto: 'Próximo',
-            timer: diffDias === 0 ? 'Hoje' : 
-                   diffDias === 1 ? 'Amanhã' : 
-                   `Em ${diffDias} dias`
+            status: 'sinalizacao-amarela',
+            mensagem: `Faltam ${diffDias} dias`
         };
     } else {
         return {
-            status: 'futuro',
-            texto: 'Agendado',
-            timer: `Em ${diffDias} dias`
+            status: 'sinalizacao-verde',
+            mensagem: `Faltam ${diffDias} dias`
         };
     }
 }
