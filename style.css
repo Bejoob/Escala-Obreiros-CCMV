@@ -1,3 +1,7 @@
+/* Importando fontes do Google (adicione isso no topo do arquivo) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
 :root {
     --primary-color: #1a1a1a;      /* Preto suave para fundo */
     --accent-color: #d8c3aa;       /* Bege/creme mais claro */
@@ -9,64 +13,91 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Estilo atualizado do título principal */
 .titulo-principal {
-    font-size: 32px; /* Tamanho da fonte */
-    color: #1a1a1a; /* Cor do texto */
-    text-align: center; /* Centralizar o texto */
-    margin: 20px 0; /* Margem superior e inferior */
-    font-weight: bold; /* Negrito */
-    background-color: #d8c3aa; /* Cor de fundo */
-    padding: 10px; /* Espaçamento interno */
-    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #d8c3aa;
+    color: #1a1a1a;
+    padding: 25px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: none; /* Remove o texto em maiúsculas */
+    border-bottom: 3px solid #a68e6d;
 }
 
-.subtitulo {
-    font-size: 20px; /* Tamanho da fonte do subtítulo */
-    color: #a68e6d; /* Cor do subtítulo */
-    text-align: center; /* Centralizar o texto */
-    margin: 10px 0; /* Margem superior e inferior */
-}
+/* Adicione uma classe para subtítulo se necessário */
+/* .subtitulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    color: #a68e6d;
+    margin-top: 5px;
+} */
 
+/* Estilo atualizado para o separador de mês */
 .mes-separador {
-    font-size: 28px; /* Tamanho da fonte */
-    margin: 30px 0; /* Margem superior e inferior */
-    text-align: center; /* Centralizar o texto */
-    color: #1a1a1a; /* Cor do texto */
-    background-color: #d8c3aa; /* Cor de fundo */
-    padding: 15px; /* Espaçamento interno */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
-    text-transform: uppercase; /* Transformar texto em maiúsculas */
-    letter-spacing: 1px; /* Espaçamento entre letras */
+    background-color: #a68e6d;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin: 30px 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .escala-item {
-    background-color: #d8c3aa; /* Cor de fundo */
-    border: 2px solid #a68e6d; /* Cor da borda */
-    border-radius: 8px; /* Bordas arredondadas */
-    padding: 15px; /* Espaçamento interno */
-    margin: 10px 0; /* Margem superior e inferior */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #d8c3aa;
 }
 
 .escala-item h3 {
-    color: #1a1a1a; /* Cor do texto do título */
-    margin: 0 0 10px; /* Margem inferior */
+    color: #1a1a1a;
+    margin: 0 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
 .escala-item p {
-    color: #1a1a1a; /* Cor do texto dos parágrafos */
-    margin: 5px 0; /* Margem superior e inferior */
+    margin: 10px 0;
+    color: #333;
+}
+
+.escala-item strong {
+    color: #a68e6d;
+}
+
+/* Estilos específicos para diferentes tipos de culto */
+.quarta {
+    border-left-color: #d8c3aa;
+}
+
+.domingo {
+    border-left-color: #a68e6d;
 }
 
 hr {
@@ -78,31 +109,31 @@ hr {
     display: flex;
     align-items: center;
     padding: 10px;
-    border-radius: 20px; /* Bordas arredondadas */
-    margin-top: 10px;
+    border-radius: 20px;
+    margin-top: 15px;
     font-weight: bold;
 }
 
 .card-sinalizacao {
-    background-color: #4caf50; /* Cor de fundo verde padrão */
-    border: 2px solid #388e3c; /* Borda verde escura */
-    border-radius: 20px; /* Bordas arredondadas */
-    padding: 10px 15px; /* Espaçamento interno */
-    width: fit-content; /* Largura ajustada ao conteúdo */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
-    color: #fff; /* Cor do texto padrão */
+    background-color: #4caf50;
+    border: 2px solid #388e3c;
+    border-radius: 20px;
+    padding: 10px 15px;
+    width: fit-content;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #fff;
 }
 
 .sinalizacao-amarela .card-sinalizacao {
-    background-color: #ffeb3b; /* Amarelo */
-    border-color: #f57f17; /* Borda amarela escura */
-    color: #000; /* Cor do texto para amarelo */
+    background-color: #ffeb3b;
+    border-color: #f57f17;
+    color: #000;
 }
 
 .sinalizacao-vermelha .card-sinalizacao {
-    background-color: #f44336; /* Vermelho */
-    border-color: #c62828; /* Borda vermelha escura */
-    color: #fff; /* Cor do texto para vermelho */
+    background-color: #f44336;
+    border-color: #c62828;
+    color: #fff;
 }
 
 .status-text {
@@ -118,4 +149,24 @@ hr {
     left: 10px; /* Posição do ícone */
     top: 50%; /* Centralizar verticalmente */
     transform: translateY(-50%); /* Ajustar para centralizar */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .escala-item {
+        padding: 15px;
+    }
+
+    .mes-separador {
+        padding: 10px 15px;
+        font-size: 1.2em;
+    }
 } 

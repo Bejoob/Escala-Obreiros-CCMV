@@ -46,21 +46,19 @@ let ultimaEscalaQuarta = []; // Armazena a última escala de quarta
 
 function gerarEscalaPeriodo() {
     const escalas = [
-        { data: "08/01/2025", tipo: "quarta", obreiros: ["Lucinha", "Bene"] },
-        { data: "12/01/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Nelly", "Jaiane"], organizacaoGeral: "Bruna" },
-        { data: "15/01/2025", tipo: "quarta", obreiros: ["Francisco", "Lucia"] },
-        { data: "19/01/2025", tipo: "domingo", recepcao: ["Victor", "Larissa"], organizacaoLugares: ["Lucinha", "Bene"], organizacaoGeral: "Márcia" },
-        { data: "22/01/2025", tipo: "quarta", obreiros: ["Zé", "Zélia"] },
-        { data: "26/01/2025", tipo: "domingo", recepcao: ["Kátia", "Gabriel"], organizacaoLugares: ["Jessier", "Tete"], organizacaoGeral: "Ryan" },
-        { data: "29/01/2025", tipo: "quarta", obreiros: ["Kátia", "Kaue"] },
-        { data: "02/02/2025", tipo: "domingo", recepcao: ["Todos os diáconos"], organizacaoLugares: [], organizacaoGeral: "" },
-        { data: "05/02/2025", tipo: "quarta", obreiros: ["Ana Paula", "Mari"] },
-        { data: "09/02/2025", tipo: "domingo", recepcao: ["Kauê", "Marcia"], organizacaoLugares: ["Zé", "Zélia"], organizacaoGeral: "Jack" },
-        { data: "12/02/2025", tipo: "quarta", obreiros: ["Lucinha", "Bene"] },
-        { data: "16/02/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Mari" },
-        { data: "19/02/2025", tipo: "quarta", obreiros: ["Francisco", "Lúcia"] },
-        { data: "23/02/2025", tipo: "domingo", recepcao: ["Victor", "Larissa"], organizacaoLugares: ["Ana Paula", "Jaiane"], organizacaoGeral: "Bruna" },
-        { data: "26/02/2025", tipo: "quarta", obreiros: ["Zé", "Zélia"] }
+        { data: "23/03/2025", tipo: "domingo", recepcao: ["Zé", "Zélia"], organizacaoLugares: ["Ana", "Samuel Jr"], organizacaoGeral: "Bruna" },
+        { data: "26/03/2025", tipo: "quarta", obreiros: ["Lucinha", "Benê"] },
+        { data: "30/03/2025", tipo: "domingo", recepcao: ["Bruna", "Gabriel"], organizacaoLugares: ["Tetê", "Jessier"], organizacaoGeral: "Mari" },
+        { data: "03/04/2025", tipo: "quarta", obreiros: ["Jaiane", "Anderson"] },
+        { data: "06/04/2025", tipo: "domingo", recepcao: ["Diáconos"], organizacaoLugares: ["Diáconos"], organizacaoGeral: "Diáconos" },
+        { data: "09/04/2025", tipo: "quarta", obreiros: ["Ana", "Fran"] },
+        { data: "13/04/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Raque", "Ruan"], organizacaoGeral: "Márcia" },
+        { data: "16/04/2025", tipo: "quarta", obreiros: ["Lucia", "S Francisco"] },
+        { data: "20/04/2025", tipo: "domingo", recepcao: ["Larissa", "Victor"], organizacaoLugares: ["Kauê", "Samuel Jr"], organizacaoGeral: "Fran" },
+        { data: "23/04/2025", tipo: "quarta", obreiros: ["Mari", "Anderson"] },
+        { data: "27/04/2025", tipo: "domingo", recepcao: ["Zélia", "Zé"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Jessier" },
+        { data: "30/04/2025", tipo: "quarta", obreiros: ["Ana", "Fran"] },
+        { data: "04/05/2025", tipo: "domingo", recepcao: ["Diáconos"], organizacaoLugares: ["Diáconos"], organizacaoGeral: "Diáconos" },
     ];
 
     let todasEscalas = document.getElementById('todas-escalas');
