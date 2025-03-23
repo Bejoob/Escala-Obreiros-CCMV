@@ -67,7 +67,7 @@ function gerarEscalaPeriodo() {
 
     escalas.forEach(escala => {
         const mes = escala.data.split('/')[1];
-        const mesNome = mes === "01" ? "Janeiro" : "Fevereiro";
+        const mesNome = obterNomeMes(mes);
         const sinalizacao = verificarStatusData(escala.data); // Verifica a sinalização
 
         if (mesAtual !== mesNome) {
@@ -308,6 +308,24 @@ function gerarEscalaQuarta() {
     const duplaAleatoria = duplasDisponiveis[Math.floor(Math.random() * duplasDisponiveis.length)];
     ultimaEscalaQuarta = [...duplaAleatoria]; // Atualiza a última escala de quarta
     return duplaAleatoria;
+}
+
+function obterNomeMes(mes) {
+    const meses = {
+        "01": "JANEIRO",
+        "02": "FEVEREIRO",
+        "03": "MARÇO",
+        "04": "ABRIL",
+        "05": "MAIO",
+        "06": "JUNHO",
+        "07": "JULHO",
+        "08": "AGOSTO",
+        "09": "SETEMBRO",
+        "10": "OUTUBRO",
+        "11": "NOVEMBRO",
+        "12": "DEZEMBRO"
+    };
+    return meses[mes] || mes;
 }
 
 // Gerar escala quando a página carregar
