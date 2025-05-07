@@ -46,19 +46,13 @@ let ultimaEscalaQuarta = []; // Armazena a última escala de quarta
 
 function gerarEscalaPeriodo() {
     const escalas = [
-        { data: "23/03/2025", tipo: "domingo", recepcao: ["Zé", "Zélia"], organizacaoLugares: ["Ana", "Samuel Jr"], organizacaoGeral: "Bruna" },
-        { data: "26/03/2025", tipo: "quarta", obreiros: ["Lucinha", "Benê"] },
-        { data: "30/03/2025", tipo: "domingo", recepcao: ["Bruna", "Gabriel"], organizacaoLugares: ["Tetê", "Jessier"], organizacaoGeral: "Mari" },
-        { data: "03/04/2025", tipo: "quarta", obreiros: ["Jaiane", "Anderson"] },
-        { data: "06/04/2025", tipo: "domingo", recepcao: ["Diáconos"], organizacaoLugares: ["Diáconos"], organizacaoGeral: "Diáconos" },
-        { data: "09/04/2025", tipo: "quarta", obreiros: ["Ana", "Fran"] },
-        { data: "13/04/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Raque", "Ruan"], organizacaoGeral: "Márcia" },
-        { data: "16/04/2025", tipo: "quarta", obreiros: ["Lucia", "S Francisco"] },
-        { data: "20/04/2025", tipo: "domingo", recepcao: ["Larissa", "Victor"], organizacaoLugares: ["Kauê", "Samuel Jr"], organizacaoGeral: "Fran" },
-        { data: "23/04/2025", tipo: "quarta", obreiros: ["Mari", "Anderson"] },
-        { data: "27/04/2025", tipo: "domingo", recepcao: ["Zélia", "Zé"], organizacaoLugares: ["Ruan", "Raquel"], organizacaoGeral: "Jessier" },
-        { data: "30/04/2025", tipo: "quarta", obreiros: ["Ana", "Fran"] },
-        { data: "04/05/2025", tipo: "domingo", recepcao: ["Diáconos"], organizacaoLugares: ["Diáconos"], organizacaoGeral: "Diáconos" },
+        { data: "07/05/2025", tipo: "quarta", obreiros: ["Lucinha", "Benê"] },
+        { data: "11/05/2025", tipo: "domingo", recepcao: ["Márcia", "Gabriel"], organizacaoLugares: ["Tetê", "Jessier"], organizacaoGeral: "Fran" },
+        { data: "14/05/2025", tipo: "quarta", obreiros: ["Jaiane", "Anderson"] },
+        { data: "18/05/2025", tipo: "domingo", recepcao: ["Camila", "Afonso"], organizacaoLugares: ["Kauê", "Samuel Jr"], organizacaoGeral: "Bruna" },
+        { data: "21/05/2025", tipo: "quarta", obreiros: ["Lucia", "S Francisco"] },
+        { data: "25/05/2025", tipo: "domingo", recepcao: ["Zélia", "Zé"], organizacaoLugares: ["Raque", "Ruan"], organizacaoGeral: "Ana" },
+        { data: "28/05/2025", tipo: "quarta", obreiros: ["Jaiane", "Anderson"] },
     ];
 
     let todasEscalas = document.getElementById('todas-escalas');
